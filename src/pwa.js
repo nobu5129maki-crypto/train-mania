@@ -41,7 +41,7 @@ function showInstallBanner() {
   banner.id = "install-banner";
   banner.className = "install-banner";
   banner.innerHTML = `
-    <img src="/icons/logo.svg" alt="" class="install-banner-icon" width="40" height="40" />
+    <img src="/icons/logo.png" alt="" class="install-banner-icon" width="40" height="40" />
     <div class="install-banner-text">
       <strong>アプリをインストール</strong>
       <span>ホーム画面からすぐにプレイ</span>
@@ -71,7 +71,7 @@ function showIOSHint() {
   hint.id = "ios-install-hint";
   hint.className = "ios-install-hint";
   hint.innerHTML = `
-    <img src="/icons/logo.svg" alt="" width="32" height="32" />
+    <img src="/icons/logo.png" alt="" width="32" height="32" />
     <p><strong>ホーム画面に追加</strong> — 共有ボタン <span class="ios-share">⎙</span> から「ホーム画面に追加」</p>
     <button type="button" class="ios-hint-close" id="btn-ios-close" aria-label="閉じる">×</button>
   `;
