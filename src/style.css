@@ -21,6 +21,10 @@
   --gold: #fbbf24;
   --radius: 12px;
   --radius-lg: 20px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
 }
 
 html {
@@ -33,8 +37,16 @@ body {
   background: var(--bg-dark);
   color: var(--text);
   min-height: 100vh;
+  min-height: 100dvh;
   line-height: 1.6;
   overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+  padding:
+    var(--safe-top)
+    var(--safe-right)
+    var(--safe-bottom)
+    var(--safe-left);
+  overscroll-behavior-y: contain;
 }
 
 body::before {
@@ -60,7 +72,7 @@ body::before {
   z-index: 1;
   max-width: 720px;
   margin: 0 auto;
-  padding: 0 16px 40px;
+  padding: 0 16px calc(40px + var(--safe-bottom));
 }
 
 /* ── Hero ── */
@@ -89,9 +101,12 @@ body::before {
 }
 
 .logo-badge {
-  font-size: 3rem;
-  margin-bottom: 8px;
+  display: block;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 8px;
   animation: train-move 3s ease-in-out infinite;
+  filter: drop-shadow(0 8px 24px rgba(59, 130, 246, 0.35));
 }
 
 @keyframes train-move {
@@ -743,8 +758,129 @@ body::before {
   color: var(--text);
 }
 
+/* ── PWA install banners ── */
+.install-banner,
+.ios-install-hint {
+  position: fixed;
+  left: max(12px, var(--safe-left));
+  right: max(12px, var(--safe-right));
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: rgba(17, 24, 39, 0.96);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+.install-banner {
+  bottom: calc(16px + var(--safe-bottom));
+}
+
+.ios-install-hint {
+  top: calc(12px + var(--safe-top));
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.install-banner-icon {
+  flex-shrink: 0;
+  border-radius: 10px;
+}
+
+.install-banner-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.install-banner-text strong,
+.ios-install-hint strong {
+  color: var(--text);
+  font-size: 0.92rem;
+}
+
+.install-banner-text span {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.install-banner-btn {
+  flex-shrink: 0;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), #6366f1);
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.install-banner-close,
+.ios-hint-close {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.ios-install-hint p {
+  flex: 1;
+  margin: 0;
+  line-height: 1.45;
+}
+
+.ios-share {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: var(--bg-elevated);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ── Standalone app mode ── */
+@media (display-mode: standalone) {
+  .hero {
+    padding-top: 32px;
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--safe-top);
+    background: var(--bg-dark);
+    z-index: 50;
+    pointer-events: none;
+  }
+}
+
 /* ── Responsive ── */
 @media (max-width: 480px) {
+  .hero {
+    padding: 32px 0 24px;
+  }
+
+  .title {
+    font-size: 1.55rem;
+  }
+
   .difficulty-grid {
     grid-template-columns: 1fr;
   }
@@ -759,5 +895,23 @@ body::before {
 
   .question-card {
     padding: 20px 16px;
+  }
+
+  .option-btn {
+    min-height: 52px;
+    padding: 14px 16px;
+  }
+
+  .btn-next,
+  .btn-primary,
+  .btn-secondary,
+  .difficulty-card,
+  .category-card {
+    min-height: 48px;
+  }
+
+  .install-banner,
+  .ios-install-hint {
+    padding: 12px 14px;
   }
 }

@@ -5,6 +5,7 @@ import {
   RANKS,
   MANIA_TITLES,
 } from "./quizData.js";
+import { initPWA } from "./pwa.js";
 
 const STORAGE_KEY = "densha-mania-quiz";
 
@@ -204,7 +205,7 @@ function renderHome() {
       <header class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
-          <div class="logo-badge">🚄</div>
+          <img class="logo-badge" src="/icons/logo.svg" alt="" width="72" height="72" />
           <h1 class="title">電車マニアクイズ</h1>
           <p class="subtitle">鉄道知識の頂点を目指せ — 車両形式からダイヤまで</p>
           <div class="rank-card" style="--rank-color: ${rank.color}">
@@ -510,4 +511,5 @@ function bindResultEvents() {
   document.getElementById("btn-home")?.addEventListener("click", goHome);
 }
 
+initPWA();
 render();
