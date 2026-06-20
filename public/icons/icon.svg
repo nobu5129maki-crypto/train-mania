@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none" role="img" aria-label="ûÊÞË¢¯¤º">
+  <defs>
+    <linearGradient id="bg" x1="64" y1="48" x2="448" y2="464" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0a0e17"/>
+      <stop offset="1" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <linearGradient id="train" x1="96" y1="248" x2="416" y2="248" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#6366f1"/>
+    </linearGradient>
+    <linearGradient id="nose" x1="96" y1="220" x2="200" y2="280" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#60a5fa"/>
+      <stop offset="1" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="track" x1="80" y1="340" x2="432" y2="340" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#334155" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#475569"/>
+      <stop offset="1" stop-color="#334155" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="256" cy="260" r="180" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3b82f6" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#3b82f6" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- App icon background -->
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <rect x="24" y="24" width="464" height="464" rx="96" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Ambient glow -->
+  <circle cx="256" cy="260" r="160" fill="url(#glow)"/>
+
+  <!-- Speed lines -->
+  <g opacity="0.25" stroke="#60a5fa" stroke-width="3" stroke-linecap="round">
+    <line x1="48" y1="210" x2="120" y2="210"/>
+    <line x1="32" y1="240" x2="108" y2="240"/>
+    <line x1="56" y1="270" x2="132" y2="270"/>
+  </g>
+
+  <!-- Track -->
+  <path d="M72 352 C140 332, 220 368, 256 352 C292 336, 372 368, 440 352" stroke="url(#track)" stroke-width="6" stroke-linecap="round"/>
+  <line x1="120" y1="352" x2="120" y2="368" stroke="#64748b" stroke-width="4" stroke-linecap="round"/>
+  <line x1="256" y1="352" x2="256" y2="368" stroke="#64748b" stroke-width="4" stroke-linecap="round"/>
+  <line x1="392" y1="352" x2="392" y2="368" stroke="#64748b" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Shinkansen silhouette -->
+  <g filter="url(#soft)">
+    <!-- Long nose -->
+    <path d="M96 268 C96 228, 128 196, 188 196 L320 196 C360 196, 392 214, 408 248 L416 268 L416 292 C416 312, 400 328, 376 328 L136 328 C112 328, 96 312, 96 292 Z" fill="url(#train)"/>
+    <path d="M96 268 C96 238, 118 210, 156 202 L188 196 C148 214, 128 244, 124 268 Z" fill="url(#nose)"/>
+    <!-- Window band -->
+    <rect x="168" y="218" width="200" height="36" rx="8" fill="#0f172a" opacity="0.45"/>
+    <rect x="184" y="226" width="44" height="20" rx="4" fill="#bfdbfe" opacity="0.9"/>
+    <rect x="236" y="226" width="44" height="20" rx="4" fill="#bfdbfe" opacity="0.75"/>
+    <rect x="288" y="226" width="44" height="20" rx="4" fill="#bfdbfe" opacity="0.6"/>
+    <!-- Headlight -->
+    <circle cx="118" cy="258" r="10" fill="#fef08a"/>
+    <circle cx="118" cy="258" r="18" fill="#fef08a" opacity="0.25"/>
+    <!-- Pantograph hint -->
+    <path d="M248 196 L256 168 L264 196" stroke="#94a3b8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Quiz badge -->
+  <g>
+    <circle cx="392" cy="136" r="52" fill="#111827" stroke="#3b82f6" stroke-width="4"/>
+    <circle cx="392" cy="136" r="40" fill="url(#train)" opacity="0.15"/>
+    <text x="392" y="152" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="900" fill="#ffffff">Q</text>
+  </g>
+
+  <!-- Gold accent spark -->
+  <path d="M340 108 L348 92 L356 108 L372 116 L356 124 L348 140 L340 124 L324 116 Z" fill="#fbbf24"/>
+</svg>
